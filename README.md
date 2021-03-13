@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                  | Type   | Options     |
+| ----------------------- | ------ | ----------- |
+| nickname                | string | null: false |
+| password                | string | null: false |
+| password_confirmation   | string | null: false |
+| email                   | string | null: false |
+| last_name               | string | null: false |
+| first_name              | string | null: false |
+| birth_day               | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- belongs_to :buyer
+- has_many :comments
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column        | Type   | Options     |
+| ------------- | -------| ----------- |
+| image         | string | null: false |
+| name          | string | null: false |
+| description   | text   | null: false |
+| category      | string | null: false |
+| status        | string | null: false |
+| delivery_fee  | string | null: false |
+| shipment_area | string | null: false |
+| shipment_day  | date   | null: false |
+| price         | string | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_many :comments
 
-* Services (job queues, cache servers, search engines, etc.)
+## buyers テーブル
 
-* Deployment instructions
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| card            | integer | null: false |
+| expiration_date | integer | null: false |
+| card_security   | integer | null: false |
+| post_number     | integer | null: false |
+| prefecture      | string  | null: false |
+| city            | string  | null: false |
+| address         | string  | null: false |
+| building_name   | string  | null: false |
+| phone_number    | integer | null: false |
 
-* ...
+### Association
+
+- belongs_to :user
+
+
+## comments テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| text        | text       | null: false |
+| user        | references |             |
+| items       | references |             |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
