@@ -6,10 +6,12 @@
 | ----------------------- | ------ | ----------- |
 | nickname                | string | null: false |
 | password                | string | null: false |
-| password_confirmation   | string | null: false |
+| encrypted_password      | string | null: false |
 | email                   | string | null: false |
 | last_name               | string | null: false |
 | first_name              | string | null: false |
+| last_name_kana          | string | null: false |
+| first_name_kana         | string | null: false |
 | birth_day               | date   | null: false |
 
 ### Association
@@ -20,17 +22,17 @@
 
 ## items テーブル
 
-| Column        | Type   | Options     |
-| ------------- | -------| ----------- |
-| image         | string | null: false |
-| name          | string | null: false |
-| description   | text   | null: false |
-| category      | string | null: false |
-| status        | string | null: false |
-| delivery_fee  | string | null: false |
-| shipment_area | string | null: false |
-| shipment_day  | date   | null: false |
-| price         | string | null: false |
+| Column           | Type    | Options     |
+| ---------------- | --------| ----------- |
+| image            | string  | null: false |
+| name             | string  | null: false |
+| description      | text    | null: false |
+| category_id      | integer | null: false |
+| state_id         | integer | null: false |
+| delivery_fee_id  | integer | null: false |
+| shipment_area_id | integer | null: false |
+| shipment_day_id  | integer | null: false |
+| price            | string  | null: false |
 
 ### Association
 
@@ -41,9 +43,6 @@
 
 | Column          | Type    | Options     |
 | --------------- | ------- | ----------- |
-| card            | integer | null: false |
-| expiration_date | integer | null: false |
-| card_security   | integer | null: false |
 | post_number     | integer | null: false |
 | prefecture      | string  | null: false |
 | city            | string  | null: false |
@@ -61,8 +60,21 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | text        | text       | null: false |
-| user        | references |             |
+| users       | references |             |
 | items       | references |             |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+
+## purchase_history テーブル
+
+| Column      | Type       | Options            |
+| ----------- | ---------- | ------------------ |
+| users_id    | references | foreign_key: true  |
+| items_id    | references | foreign_key: true  |
 
 ### Association
 
