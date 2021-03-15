@@ -48,7 +48,7 @@
 | address          | string     | null: false        |
 | building_name    | string     |                    |
 | phone_number     | string     | null: false        |
-| user             | references | foreign_key: true  |
+| history          | references | foreign_key: true  |
 
 ### Association
 - belongs_to :history
