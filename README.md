@@ -16,8 +16,8 @@
 ### Association
 
 - has_many :items
-- has_many :buyers
 - has_many :comments
+- has_many :histories
 
 ## items テーブル
 
@@ -36,18 +36,19 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchase_history
+- has_one :history
 
 ## buyers テーブル
 
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| post_number      | string  | null: false |
-| shipment_area_id | string  | null: false |
-| city             | string  | null: false |
-| address          | string  | null: false |
-| building_name    | string  |             |
-| phone_number     | string  | null: false |
+| Column           | Type       | Options            |
+| ---------------- | ---------- | ------------------ |
+| post_number      | string     | null: false        |
+| shipment_area_id | string     | null: false        |
+| city             | string     | null: false        |
+| address          | string     | null: false        |
+| building_name    | string     |                    |
+| phone_number     | string     | null: false        |
+| user             | references | foreign_key: true  |
 
 ### Association
 
@@ -66,7 +67,7 @@
 - belongs_to :user
 
 
-## purchase_history テーブル
+## history テーブル
 
 | Column | Type       | Options            |
 | ------ | ---------- | ------------------ |
@@ -77,4 +78,4 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_one :buyers
+- belongs_to :buyer
