@@ -30,8 +30,8 @@
 | delivery_fee_id  | integer    | null: false       |
 | shipment_area_id | integer    | null: false       |
 | shipment_day_id  | integer    | null: false       |
-| price            | string     | null: false       |
-| user             | references | foreign_key: true |
+| price            | integer    | null: false       |
+| history          | references | foreign_key: true |
 ### Association
 
 - belongs_to :user
@@ -43,7 +43,7 @@
 | Column           | Type       | Options            |
 | ---------------- | ---------- | ------------------ |
 | post_number      | string     | null: false        |
-| shipment_area_id | string     | null: false        |
+| shipment_area_id | integer    | null: false        |
 | city             | string     | null: false        |
 | address          | string     | null: false        |
 | building_name    | string     |                    |
@@ -51,6 +51,7 @@
 | user             | references | foreign_key: true  |
 
 ### Association
+- belongs_to :history
 
 
 ## comments テーブル
@@ -78,4 +79,4 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :buyer
+- has_one :buyer
