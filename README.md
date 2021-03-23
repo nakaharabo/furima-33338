@@ -54,6 +54,7 @@
 - belongs_to :history
 
 
+
 ## comments テーブル
 
 | Column      | Type       | Options                      |
