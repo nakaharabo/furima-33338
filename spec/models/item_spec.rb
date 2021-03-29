@@ -32,25 +32,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
+      it 'categoryの値1が選択された場合は登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category must be other than 1"
+      end
       it 'stateが空では登録できない' do
         @item.state_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "State can't be blank"
+      end
+      it 'stateの値1が選択された場合は登録できない登録できない' do
+        @item.state_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "State must be other than 1"
       end
       it 'delivery_feeが空では登録できない' do
         @item.delivery_fee_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Delivery fee can't be blank"
       end
+      it 'delivery_feeの値1が選択された場合は登録できない' do
+        @item.delivery_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Delivery fee must be other than 1"
+      end
       it 'shipment_areaが空では登録できない' do
         @item.shipment_area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipment area can't be blank"
       end
+      it 'shipment_areaの値1が選択された場合は登録できない' do
+        @item.shipment_area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipment area must be other than 1"
+      end
       it 'shipment_dayが空では登録できない' do
         @item.shipment_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipment day can't be blank"
+      end
+      it 'shipment_dayの値1が選択された場合は登録できない' do
+        @item.shipment_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipment day must be other than 1"
       end
       it 'priceが空では登録できない' do
         @item.price = ''
