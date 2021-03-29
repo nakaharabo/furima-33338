@@ -38,6 +38,7 @@
 - has_many :comments
 - has_one :history
 
+
 ## buyers テーブル
 
 | Column           | Type       | Options            |
