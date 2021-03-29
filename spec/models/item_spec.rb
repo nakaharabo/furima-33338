@@ -22,7 +22,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Name can't be blank"
       end
-      it 'nameが空では登録できない' do
+      it 'discriptionが空では登録できない' do
         @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Description can't be blank"
@@ -94,6 +94,16 @@ RSpec.describe Item, type: :model do
       end
       it '販売価格が全角数字では登録できない' do
         @item.price = '３００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it '販売価格が半角英数混合では登録できない' do
+        @item.price = 'abc123'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it '販売価格が半角英語だけでは登録できない' do
+        @item.price = 'abcdef'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
