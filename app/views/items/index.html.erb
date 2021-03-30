@@ -134,7 +134,7 @@
         <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" %>
-          <% end %>
+          
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
@@ -154,8 +154,8 @@
               <span class='star-count'>0</span>
             </div>
           </div>
-        </div>
-        
+        </div>    
+        <% end %>    
       </li>
     <% end %>
       <% if @items.length == 0 %>
