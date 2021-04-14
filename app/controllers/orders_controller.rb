@@ -1,16 +1,18 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out_item, only: [:index]
+  before_action :find_params, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order_history = OrderHistory.new
+    if @item.history.present?
+      redirect_to root_path
+    end
    
   end
 
 
   def create
-    @item = Item.find(params[:item_id])
     @order_history = OrderHistory.new(order_params)
     if @order_history.valid?
       pay_item
@@ -38,7 +40,11 @@ private
   end
 
   def sold_out_item
-    redirect_to root_path if @item.purchase.present?
-   end
+    redirect_to root_path if  @history.present?
+  end
+
+  def find_params
+    @item = Item.find(params[:item_id])
+  end
 
 end
