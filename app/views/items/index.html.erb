@@ -137,9 +137,12 @@
           
 
           <%# 商品が売れていればsold outを表示しましょう %>
+   
+         <% if item.history.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+            <% end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
@@ -157,7 +160,10 @@
         </div>    
         <% end %>    
       </li>
-    <% end %>
+     <% end %>
+
+    
+
       <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
