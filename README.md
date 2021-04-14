@@ -39,7 +39,7 @@
 - has_one :history
 
 
-## buyers テーブル
+## orders テーブル
 
 | Column           | Type       | Options            |
 | ---------------- | ---------- | ------------------ |
@@ -81,4 +81,4 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_one :buyer
+- has_one :order
