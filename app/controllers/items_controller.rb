@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_params, only:[:show, :edit, :update, :destroy ]
+  before_action :find_params, only:[:show, :edit, :update, :destroy, :show ]
   before_action :redirect_root, only:[:edit, :update, :destroy]
 
   def index
@@ -25,6 +25,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.history.present?
+      redirect_to root_path
+    end
   end
 
   def update

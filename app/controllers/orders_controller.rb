@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out_item, only: [:index]
   before_action :find_params, only: [:index, :create]
+  before_action :redirect_root, only:[:index]
 
   def index
     @order_history = OrderHistory.new
@@ -45,6 +46,9 @@ private
 
   def find_params
     @item = Item.find(params[:item_id])
+  end
+  def redirect_root
+    redirect_to root_path if current_user.id == @item.user_id
   end
 
 end
