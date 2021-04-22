@@ -19,5 +19,7 @@ class User < ApplicationRecord
       validates :birth_day
   end
 
+  has_many :comments, dependent: :destroy
+
   
 end
